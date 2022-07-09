@@ -13,7 +13,7 @@ class Quote(models.Model):
     container_type = models.CharField(max_length=200, blank=True, null=True)
     is_legal_weight = models.BooleanField(default=True)
     is_hazmat = models.BooleanField(default=False)
-    additional_details = models.TextField(default="")
+    additional_details = models.TextField(null=True, blank=True, default="")
     # total = models.CharField(max_length=200, null=True, blank=True)
     total = MoneyField(decimal_places=2,
                        default=0,
