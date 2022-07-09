@@ -18,6 +18,6 @@ class Quote(models.Model):
     total = MoneyField(decimal_places=2,
                        default=0,
                        default_currency='USD',
-                       max_digits=11,
+                       max_digits=25,
                        )
     # url = models.URLField(null=True, blank=True, verbose_name="API URL")
