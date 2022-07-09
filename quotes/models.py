@@ -1,5 +1,5 @@
 from django.db import models
-
+from djmoney.models.fields import MoneyField
 # Create your models here.
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -14,3 +14,10 @@ class Quote(models.Model):
     is_legal_weight = models.BooleanField(default=True)
     is_hazmat = models.BooleanField(default=False)
     additional_details = models.TextField(default="")
+    # total = models.CharField(max_length=200, null=True, blank=True)
+    total = MoneyField(decimal_places=2,
+                       default=0,
+                       default_currency='USD',
+                       max_digits=11,
+                       )
+    # url = models.URLField(null=True, blank=True, verbose_name="API URL")
