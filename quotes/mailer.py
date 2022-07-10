@@ -11,8 +11,8 @@ def send_quote_confirmation(**data):
     print(f"Send QUote Confirm: {data}")
     message = Mail(
         from_email='info@globalentrynow.com',
-        # to_emails=data['to_email'],
-        to_emails='courtney.hurt@icloud.com',
+        to_emails=data['email_address'],
+        # to_emails='courtney.hurt@icloud.com',
         subject='Your Quote from All Purpose Trucking!',
         html_content=f'<h1>Hello {data["company_name"]}!</h1><br><p>We received your quote request with the below '
                      f'details. Please let us know if you have any questions!</p><br><strong>Container Type:</strong> '
