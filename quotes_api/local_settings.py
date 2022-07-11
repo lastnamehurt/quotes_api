@@ -1,4 +1,8 @@
 from .settings import *
+import dotenv
+
+
+dotenv.read_dotenv()
 
 DATABASES = {
     'default': {
