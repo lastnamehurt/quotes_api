@@ -48,7 +48,7 @@ git_clean:
 	git branch --merged | grep  -v '\\*\\|main\\|develop' | xargs -n 1 git branch -d
 
 test:
-	./manage.py test --keepdb --settings=global_entry_notifier.settings
+	./manage.py test --keepdb --settings=quotes_api.settings
 
 resetMigrations:
 	find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
@@ -59,7 +59,7 @@ install:
 	pip install -r requirements.txt
 
 backupDb:
-	heroku pg:backups:capture --app globalentrynow
+	heroku pg:backups:capture --app quotes-api
 
 heroku-pause:
 	heroku ps:scale worker=0

@@ -20,12 +20,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^s3)zda74ye65!g$08qkkfxn-nztk39(6^30-aspabt-0r1qbw'
+SECRET_KEY = os.environ.get("QUOTES_API_SECRET_KEY", None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "drivewithapt.com",
+    "api.drivewithapt.com"
+]
 
 
 # Application definition
@@ -97,10 +102,10 @@ WSGI_APPLICATION = 'quotes_api.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "datauor63ko26l",
-        "USER": "rqpuoqwslijrkx",
-        "PASSWORD": "d755726b793df04bdb94d938b09924e9a7d5d05963deaddd86fc73e073cae8d5",
-        "HOST": "ec2-34-239-241-121.compute-1.amazonaws.com",
+        "NAME": os.environ.get("QUOTES_API_DB_NAME", None),
+        "USER": os.environ.get("QUOTES_API_USER", None),
+        "PASSWORD": os.environ.get("QUOTES_API_PASSWORD", None),
+        "HOST": os.environ.get("QUOTES_API_HOST", None),
         "PORT": "5432",
     },
     # 'TEST': {
