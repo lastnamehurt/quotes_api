@@ -7,11 +7,13 @@ backports.zoneinfo==0.2.1
 decorator==5.1.1
 Django==4.0.6
 django-cors-headers==3.13.0
+django-dotenv==1.4.2
 django-filter==22.1
 django-money==3.0.0
 django-phonenumber-field==6.3.0
 djangorestframework==3.13.1
 executing==0.8.3
+gunicorn==20.1.0
 importlib-metadata==4.12.0
 ipython==8.4.0
 jedi==0.18.1
@@ -22,6 +24,7 @@ pexpect==4.8.0
 phonenumbers==8.12.51
 pickleshare==0.7.5
 prompt-toolkit==3.0.30
+psycopg2-binary==2.9.3
 ptyprocess==0.7.0
 pure-eval==0.2.2
 py-moneyed==2.0
@@ -36,7 +39,5 @@ starkbank-ecdsa==2.0.3
 traitlets==5.3.0
 typing_extensions==4.3.0
 wcwidth==0.2.5
-zipp==3.8.0
 whitenoise==6.2.0
-gunicorn==20.1.0
-psycopg2-binary==2.9.3
+zipp==3.8.0
