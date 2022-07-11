@@ -1,18 +1,18 @@
 # using SendGrid's Python Library
 # https://github.com/sendgrid/sendgrid-python
+import logging
 
 from django.http import JsonResponse
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
+from quotes_api.settings import SENDGRID_API_KEY
+
 
 def send_quote_confirmation(**data):
-
-    print(f"Send QUote Confirm: {data}")
     message = Mail(
-        from_email='info@globalentrynow.com',
+        from_email='support@drivewithapt.com',
         to_emails=data['email_address'],
-        # to_emails='courtney.hurt@icloud.com',
         subject='Your Quote from All Purpose Trucking!',
         html_content=f'<h1>Hello {data["company_name"]}!</h1><br><p>We received your quote request with the below '
                      f'details. Please let us know if you have any questions!</p><br><strong>Container Type:</strong> '
@@ -21,12 +21,8 @@ def send_quote_confirmation(**data):
                      f'{data["is_legal_weight"]}<br><strong>Hazmat:</strong> '
                      f'{data["is_hazmat"]}<br><strong>Total:</strong> {data["total"]}')
     try:
-        # sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-        sg = SendGridAPIClient("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")
-        response = sg.send(message)
-        print(response.status_code)
-        print(response.body)
-        print(response.headers)
-        return JsonResponse({"Result": "Success"})
+        sg = SendGridAPIClient(SENDGRID_API_KEY)
+        sg.send(message)
+        return JsonResponse({"success": "Ok"})
     except Exception as e:
-        print(e)
+        logging.error(e)
