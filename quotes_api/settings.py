@@ -20,12 +20,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^s3)zda74ye65!g$08qkkfxn-nztk39(6^30-aspabt-0r1qbw'
+SECRET_KEY = os.environ.get("QUOTES_API_SECRET_KEY", None)
+SENDGRID_API_KEY = os.environ.get("QUOTES_API_SENDGRID_API_KEY", None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "drivewithapt.com",
+    "api.drivewithapt.com"
+]
 
 
 # Application definition
@@ -37,10 +43,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'quotes'    
+    'quotes',
+    'phonenumber_field',
+    'corsheaders',
+    'rest_framework',
+    'djmoney'
+
 ]
 
+PHONENUMBER_DB_FORMAT = 'NATIONAL'
+PHONENUMBER_DEFAULT_REGION = "US"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -48,8 +65,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
+]
+CORS_ALLOW_ALL_ORIGINS = True
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 ROOT_URLCONF = 'quotes_api.urls'
 
 TEMPLATES = [
@@ -75,12 +101,19 @@ WSGI_APPLICATION = 'quotes_api.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("QUOTES_API_DB_NAME", None),
+        "USER": os.environ.get("QUOTES_API_USER", None),
+        "PASSWORD": os.environ.get("QUOTES_API_PASSWORD", None),
+        "HOST": os.environ.get("QUOTES_API_HOST", None),
+        "PORT": "5432",
+    },
+    # 'TEST': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': f"{BASE_DIR} / 'db.sqlite3'",
+    # }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
