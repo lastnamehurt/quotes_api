@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -32,9 +31,9 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "drivewithapt.com",
-    "api.drivewithapt.com"
+    "api.drivewithapt.com",
+    "172.16.225.243"  # werkzeug
 ]
-
 
 # Application definition
 
@@ -49,7 +48,9 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'corsheaders',
     'rest_framework',
-    'djmoney'
+    'djmoney',
+    'django_extensions',
+    'contacts'
 
 ]
 
@@ -98,7 +99,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'quotes_api.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -135,7 +135,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -148,7 +147,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

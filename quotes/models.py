@@ -20,4 +20,5 @@ class Quote(models.Model):
                        default_currency='USD',
                        max_digits=25,
                        )
+    contact = models.ForeignKey("contacts.Contact", null=True, blank=True, on_delete=models.DO_NOTHING)
     # url = models.URLField(null=True, blank=True, verbose_name="API URL")
