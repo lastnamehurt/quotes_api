@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("QUOTES_API_SECRET_KEY", None)
-SENDGRID_API_KEY = os.environ.get("QUOTES_API_SENDGRID_API_KEY_PROD", None)
+SENDGRID_API_KEY = os.environ.get("QUOTES_API_SENDGRID_API_KEY", None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
