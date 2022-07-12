@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 import os
 import sys
-import dotenv
 
 
 if __name__ == "__main__":
-    if os.environ.get("NODE_ENV", None) == "development":
-        dotenv.read_dotenv()
 
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "quotes_api.settings")
     try:
