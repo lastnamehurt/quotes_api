@@ -1,1 +1,1 @@
-web: gunicorn --env DJANGO_SETTINGS_MODULE=quotes_api.production_settings quotes_api.wsgi
+web: gunicorn --env DJANGO_SETTINGS_MODULE=quotes_api quotes_api.wsgi
