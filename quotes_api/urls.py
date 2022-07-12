@@ -10,6 +10,8 @@ from rest_framework import viewsets
 # Serializers define the API representation.
 from quotes.mailer import send_quote_confirmation
 from quotes.models import Quote
+from quotes.views import send_contact_email
+
 
 """
 Move the Serializer and ViewSet to it's own module once we have more than one!
@@ -45,5 +47,6 @@ router.register(r'quotes', QuoteViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('v1/', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
+    path('contact/', send_contact_email)
 ]

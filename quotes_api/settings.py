@@ -27,6 +27,8 @@ SENDGRID_API_KEY = os.environ.get("QUOTES_API_SENDGRID_API_KEY_PROD", None)
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "localhost:8000",
+    "localhost:3000",
     "localhost",
     "127.0.0.1",
     "drivewithapt.com",
