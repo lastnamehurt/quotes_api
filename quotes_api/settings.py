@@ -105,10 +105,10 @@ WSGI_APPLICATION = 'quotes_api.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("QUOTES_API_DB_NAME", None),
-        "USER": os.environ.get("QUOTES_API_USER", None),
-        "PASSWORD": os.environ.get("QUOTES_API_PASSWORD", None),
-        "HOST": os.environ.get("QUOTES_API_HOST", None),
+        "NAME": "datauor63ko26l",
+        "USER": "rqpuoqwslijrkx",
+        "PASSWORD": os.environ["QUOTES_API_PASSWORD"],
+        "HOST": "ec2-34-239-241-121.compute-1.amazonaws.com",
         "PORT": "5432",
     },
     # 'TEST': {
