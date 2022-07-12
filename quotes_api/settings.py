@@ -45,12 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'quotes',
+    'contacts',
     'phonenumber_field',
     'corsheaders',
     'rest_framework',
     'djmoney',
     'django_extensions',
-    'contacts'
 
 ]
 
