@@ -41,3 +41,4 @@ typing_extensions==4.3.0
 wcwidth==0.2.5
 whitenoise==6.2.0
 zipp==3.8.0
+Werkzeug==2.1.2
